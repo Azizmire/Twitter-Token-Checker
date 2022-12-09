@@ -21,7 +21,7 @@
 • Auto Retry on Proxy Fail
 • Proxy Support
 • Undetectable
->Source (Python) & Support are included.
+>Source (Python)
 
 ### INFO
 
