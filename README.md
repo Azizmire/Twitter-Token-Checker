@@ -16,12 +16,15 @@
 ### Usage
 
 
-1. Download ZIP <a href="https://github.com/useragents/Discord-Token-Checker/archive/refs/heads/main.zip">here</a> and extract the ZIP
-2. Put your token list inside of the `tokens.txt` file.
-3. Run the `run.bat` file
-4. All valid tokens will be saved to the `Good.txt` file.
+• Easy to use
+• Multi-threading (Fast)
+• Auto Retry on Proxy Fail
+• Proxy Support
+• Undetectable
+>Source (Python) & Support are included.
 
-### Please note
-
-This is one of my first JavaScript projects, I am not responsible for your actions using this script. This script was made for educational purposes.
+### INFO
+```run start.bat```
+Load in "tokens.txt" twitter tokens (format token only)
+Proxy Format: user:password@ip:port OR ip:port
 
