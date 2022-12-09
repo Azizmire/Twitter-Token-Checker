@@ -24,9 +24,10 @@
 >Source (Python) & Support are included.
 
 ### INFO
-```run start.bat```
 
 Load in "tokens.txt" twitter tokens (format token only)
 
+
 Proxy Format: user:password@ip:port OR ip:port
 
+```run start.bat```
