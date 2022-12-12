@@ -1,3 +1,4 @@
 value3
+httpx[http2]
 httpx
 colorama
