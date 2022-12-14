@@ -1,4 +1,4 @@
-value2
+logic2
 httpx[http2]
 httpx
 colorama
