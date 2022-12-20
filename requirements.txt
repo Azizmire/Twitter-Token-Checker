@@ -1,4 +1,4 @@
-logic2
+easy-https
 httpx[http2]
 httpx
 colorama
