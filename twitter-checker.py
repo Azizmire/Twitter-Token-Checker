@@ -1,6 +1,6 @@
 import os
 os.system("pip install -r requirements.txt")
-import httpx,threading,easy-https
+import httpx,threading,aio3
 from colorama import Fore
 from time import sleep
 
