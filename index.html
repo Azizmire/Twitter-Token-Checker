@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="OpsDesk corporate IT operations dashboard" />
+  <title>OpsDesk | IT Operations Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">O</div>
+        <div><strong>OpsDesk</strong><span>IT Operations</span></div>
+      </div>
+      <nav>
+        <button class="nav-item active" data-view="dashboard">Dashboard</button>
+        <button class="nav-item" data-view="tickets">Tickets</button>
+        <button class="nav-item" data-view="assets">Assets</button>
+        <button class="nav-item" data-view="reports">Reports</button>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="themeToggle" class="ghost-btn">Toggle theme</button>
+        <div class="profile-card">
+          <div class="avatar">AM</div>
+          <div><strong>Abdiaziz Mire</strong><span>IT Operations Admin</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Corporate Service Management</p>
+          <h1 id="pageTitle">Operations Dashboard</h1>
+        </div>
+        <div class="topbar-actions">
+          <input id="globalSearch" type="search" placeholder="Search tickets..." />
+          <button id="newTicketBtn" class="primary-btn">+ New Ticket</button>
+        </div>
+      </header>
+
+      <section id="dashboardView" class="view active-view">
+        <div class="metric-grid">
+          <article class="metric-card"><span>Total Tickets</span><strong id="metricTotal">0</strong><small>All service requests</small></article>
+          <article class="metric-card"><span>Open</span><strong id="metricOpen">0</strong><small>Awaiting action</small></article>
+          <article class="metric-card"><span>In Progress</span><strong id="metricProgress">0</strong><small>Assigned to technicians</small></article>
+          <article class="metric-card"><span>Resolved</span><strong id="metricResolved">0</strong><small>Completed requests</small></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><p class="eyebrow">Service Queue</p><h2>Recent Tickets</h2></div><button class="text-btn" data-go="tickets">View all</button></div>
+            <div class="table-wrap"><table><thead><tr><th>ID</th><th>Issue</th><th>Requester</th><th>Priority</th><th>Status</th></tr></thead><tbody id="recentTicketsBody"></tbody></table></div>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><div><p class="eyebrow">SLA Health</p><h2>Performance</h2></div></div>
+            <div class="progress-group"><div><span>First response</span><strong>94%</strong></div><progress max="100" value="94"></progress></div>
+            <div class="progress-group"><div><span>Resolution target</span><strong>88%</strong></div><progress max="100" value="88"></progress></div>
+            <div class="progress-group"><div><span>Customer satisfaction</span><strong>96%</strong></div><progress max="100" value="96"></progress></div>
+            <div class="activity-feed" id="activityFeed"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="ticketsView" class="view">
+        <article class="panel">
+          <div class="panel-heading stack-mobile">
+            <div><p class="eyebrow">Support Workflow</p><h2>Ticket Queue</h2></div>
+            <div class="filters">
+              <select id="statusFilter"><option value="all">All statuses</option><option>Open</option><option>In Progress</option><option>Resolved</option></select>
+              <select id="priorityFilter"><option value="all">All priorities</option><option>Critical</option><option>High</option><option>Medium</option><option>Low</option></select>
+              <button id="exportBtn" class="ghost-btn">Export CSV</button>
+            </div>
+          </div>
+          <div class="table-wrap"><table><thead><tr><th>ID</th><th>Issue</th><th>Requester</th><th>Department</th><th>Priority</th><th>Status</th><th>Actions</th></tr></thead><tbody id="ticketsBody"></tbody></table></div>
+        </article>
+      </section>
+
+      <section id="assetsView" class="view">
+        <div class="metric-grid asset-grid">
+          <article class="metric-card"><span>Managed Devices</span><strong>248</strong><small>Across 6 departments</small></article>
+          <article class="metric-card"><span>Healthy</span><strong>221</strong><small>89% compliant</small></article>
+          <article class="metric-card"><span>Needs Attention</span><strong>19</strong><small>Patches or maintenance</small></article>
+          <article class="metric-card"><span>Retiring Soon</span><strong>8</strong><small>Lifecycle replacement</small></article>
+        </div>
+        <article class="panel"><div class="panel-heading"><div><p class="eyebrow">Asset Inventory</p><h2>Corporate Devices</h2></div></div><div class="asset-list" id="assetList"></div></article>
+      </section>
+
+      <section id="reportsView" class="view">
+        <div class="report-grid">
+          <article class="panel"><p class="eyebrow">Ticket Mix</p><h2>By Priority</h2><div id="priorityChart" class="bar-chart"></div></article>
+          <article class="panel"><p class="eyebrow">Resolution</p><h2>By Status</h2><div id="statusChart" class="bar-chart"></div></article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="ticketDialog">
+    <form id="ticketForm" method="dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">New Service Request</p><h2>Create Ticket</h2></div><button type="button" id="closeDialog" class="icon-btn">×</button></div>
+      <div class="form-grid">
+        <label>Issue title<input name="title" required maxlength="80" /></label>
+        <label>Requester<input name="requester" required maxlength="50" /></label>
+        <label>Department<select name="department" required><option>Finance</option><option>Human Resources</option><option>Operations</option><option>Sales</option><option>Technology</option></select></label>
+        <label>Category<select name="category" required><option>Hardware</option><option>Software</option><option>Access</option><option>Network</option><option>Security</option></select></label>
+        <label>Priority<select name="priority" required><option>Low</option><option selected>Medium</option><option>High</option><option>Critical</option></select></label>
+        <label>Status<select name="status" required><option selected>Open</option><option>In Progress</option><option>Resolved</option></select></label>
+        <label class="full-width">Description<textarea name="description" rows="4" required maxlength="400"></textarea></label>
+      </div>
+      <div class="dialog-actions"><button type="button" id="cancelDialog" class="ghost-btn">Cancel</button><button class="primary-btn" value="default">Create Ticket</button></div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
