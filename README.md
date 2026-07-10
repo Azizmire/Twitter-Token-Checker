@@ -1,33 +1,58 @@
-<br/>
-<div align="center">
-  
-  # Twitter Token Checker
-  
-  (This tool is able to remove invalid/flagged twitter tokens)
-  
-  ![image](https://media.discordapp.net/attachments/1029152294199099443/1050883656694124574/image.png)
+# OpsDesk — Corporate IT Operations Dashboard
 
+OpsDesk is a responsive, browser-based IT service management dashboard designed to demonstrate real-world support workflows and front-end engineering skills.
 
-  
-</div>
+## Highlights
 
---------------------------------------
+- Executive dashboard with live support metrics
+- Create, edit, resolve, reopen, and delete tickets
+- Priority, status, department, and category tracking
+- Search and multi-filter ticket queue
+- IT asset inventory with device health information
+- Activity feed and SLA progress indicators
+- Light and dark themes
+- Browser persistence using Local Storage
+- Responsive interface for desktop, tablet, and mobile
+- CSV export for ticket reporting
 
-### Usage
+## Technology
 
+- Semantic HTML5
+- Modern CSS with responsive layouts and CSS variables
+- Vanilla JavaScript (ES6+)
+- Local Storage API
+- No frameworks or build tools required
 
-• Easy to use
-• Multi-threading (Fast)
-• Auto Retry on Proxy Fail
-• Proxy Support
-• Undetectable
->Source (Python)
+## Run the Project
 
-### INFO
+1. Download or clone the repository.
+2. Open `index.html` in a modern browser.
+3. Use the dashboard to create and manage support tickets.
 
-Load in "tokens.txt" twitter tokens (format token only)
+## Portfolio Value
 
+This project demonstrates:
 
-Proxy Format: user:password@ip:port OR ip:port
+- User-interface and user-experience design
+- JavaScript state management
+- CRUD operations
+- Search, sorting, and filtering
+- Data visualization
+- Form validation
+- Responsive design
+- IT support and service-management concepts
 
-```run start.bat```
+## Planned Version 2
+
+- React frontend
+- Node.js and Express REST API
+- PostgreSQL database
+- Authentication and role-based access
+- Ticket comments and audit logs
+- Automated testing
+- Cloud deployment
+
+## Author
+
+**Abdiaziz Mire**  
+Computer Science student and aspiring corporate technology professional in the Minneapolis–Saint Paul area.
